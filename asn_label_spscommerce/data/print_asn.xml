@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="asn_label"
+            model="stock.picking"
+            string="ASN Label (ZPL)"
+            name="edi_stock_spscommerce.asn_label_zpl"
+            file="edi_stock_spscommerce.asn_label_zpl"
+            report_type="qweb-text"
+            print_report_name="object._get_report_filename()"
+        />
+    </data>
+</odoo>

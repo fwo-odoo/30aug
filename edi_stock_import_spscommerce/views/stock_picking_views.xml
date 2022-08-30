@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="shipment_edi"
+        parent="stock.menu_stock_warehouse_mgmt"
+        sequence="150"
+        action="action_shipment_edi"/>
+</odoo>

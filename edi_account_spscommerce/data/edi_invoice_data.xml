@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sync_document_export_invoice" model="sync.document.type">
+            <field name="name">Export Invoice (XML SPS Commerce)</field>
+            <field name="doc_code">export_invoice_xml</field>
+            <field name="op_type">out</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record model="ir.actions.server" id="action_export_account_invoice_to_edi">
+            <field name="name">Export invoices to EDI</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="binding_model_id" ref="account.model_account_move" />
+            <field name="state">code</field>
+            <field name="code">
+if records:
+    records.export_invoice_to_edi()
+            </field>
+        </record>
+
+    </data>
+</odoo>

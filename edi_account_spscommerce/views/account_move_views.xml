@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_move_form_inherit_edi_sale" model="ir.ui.view">
+        <field name="name">view.account.move.form.inherit.edi.sale</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page name="edi_fields" string="EDI">
+                        <group name="first_group">
+                            <group name="first_group_left">
+                                <field name="x_edi_status"/>
+                                <field name="x_edi_date"/>
+                                <field name="x_merch_type_code"/>
+                                <field name="x_quantity_totals_qualifier"/>
+                                <field name="x_tset_purpose_code"/>
+                            </group>
+                            <group name="first_group_right">
+                                <field name="x_customer_payment_terms"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='name']" position="after">
+                    <field name="x_line_sequence_number" optional="hide"/>
+                    <field name="x_vendor_part_number" optional="hide"/>
+                    <field name="x_buyer_part_number" optional="hide"/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='quantity']" position="after">
+                    <field name="x_qty_cases" optional="show"/>
+                    <field name="x_case_price" optional="show"/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='product_uom_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="optional">hide</attribute>
+                </xpath>
+                <!-- Duplicating on line_ids to enable saving of custom fields (limitation of v13 accounting) -->
+                <!-- https://github.com/odoo/odoo/issues/40915#issuecomment-574624912 -->
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='line_ids']/tree[1]/field[@name='name']" position="after">
+                    <field name="x_line_sequence_number" invisible="1"/>
+                    <field name="x_vendor_part_number" invisible="1"/>
+                    <field name="x_buyer_part_number" invisible="1"/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='line_ids']/tree[1]/field[@name='name']" position="after">
+                    <field name="x_qty_cases" invisible="1"/>
+                    <field name="x_case_price" invisible="1"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

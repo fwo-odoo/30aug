@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.actions.server" id="action_shipment_edi">
+        <field name="name">EDI Shipment Import</field>
+        <field name="model_id" ref="base_edi.model_edi_sync_action"/>
+        <field name="state">code</field>
+        <field name="code">
+model._do_doc_sync_cron()
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="asn_label_zpl">
+            <t t-foreach="docs" t-as="picking">
+                <t t-esc="picking.x_asn_data_zpl"/>
+            </t>
+        </template>
+    </data>
+</odoo>

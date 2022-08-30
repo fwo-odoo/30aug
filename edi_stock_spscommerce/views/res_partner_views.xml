@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_edi_stock_res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">edi.stock.view.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="edi_sale_spscommerce.view_edi_res_partner_form_inherit"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='x_inbound_edi_po']" position="after">
+                        <field name="x_outbound_edi_asn"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</odoo>

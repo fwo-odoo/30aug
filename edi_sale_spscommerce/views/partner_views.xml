@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_edi_res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">edi.view.res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page name="edi_fields" string="EDI">
+                        <group name="first_group">
+                            <group name="left_group">
+                                <field name="x_price_in_cases"/>
+                                <field name="x_contact_type_code"/>
+                                <field name="x_location_code_qualifier"/>
+                                <field name="x_address_location_number"/>
+                                <field name="x_inbound_edi_po"/>
+                            </group>
+                            <group name="right_group"/>
+                        </group>
+                    </page>
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

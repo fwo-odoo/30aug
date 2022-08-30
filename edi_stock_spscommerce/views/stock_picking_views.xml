@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_picking_form_inherit_edi_shipping" model="ir.ui.view">
+        <field name="name">view.stock.picking.form.inherit.edi.shipping</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/div[1]" position="before">
+                    <field name="x_shipment_identification"/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page name="edi_data" string="EDI">
+                        <group name="group_edi">
+                            <group name="group_left_edi">
+                                <field name="x_bill_of_lading_number"/>
+                                <field name="x_carrier_trans_method_code"/>
+                                <field name="x_carrier_alpha_code"/>
+                                <field name="x_carrier_routing"/>
+                                <field name="x_weight"/>
+                            </group>
+                            <group name="group_right_edi">
+                                <field name="x_all_contacts"/>
+                                <field name="x_contact_name"/>
+                                <field name="x_contact_phone"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="x_edi_backorder_origin" string="EDI Backorder Origin"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="view_stock_move_line_tree_inherit_edi_shipping" model="ir.ui.view">
+        <field name="name">view.stock.move.line.tree.inherit.edi.shipping</field>
+        <field name="model">stock.move.line</field>
+        <field name="priority">1000</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='qty_done']" position="before">
+                    <field name="x_ordered_cases" optional="show"/>
+                    <field name="x_done_cases" optional="show"/>
+                    <field name="x_edi_uom" optional="hide"/>
+                    <field name="x_line_sequence_number" optional="hide"/>
+                    <field name="x_consumer_package_code" optional="hide"/>
+                    <field name="x_buyer_part_number" optional="hide"/>
+                    <field name="x_vendor_part_number" optional="hide"/>
+                    <field name="x_part_number" optional="hide"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_edi_config_edi_form_stock_spscommerce_inherit" model="ir.ui.view">
+            <field name="name">view.edi.config.edi.form.stock.spscommerce.inherit</field>
+            <field name="model">edi.config</field>
+            <field name="inherit_id" ref="base_edi.view_edi_config_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//header" postion="inside">
+                        <button type="object" name="authenticate_client_id" string="Authenticate"/>
+                        <button type="object" name="renew_access_token" string="Refresh Authentication"/>
+                    </xpath>
+                    <xpath expr="//notebook" name="page_spsapi_auth" position="inside">
+                        <page string="SPS API Authentication">
+                            <group name="grp_auth_main">
+                                <group name="grp_auth_sub_2">
+                                    <field name="app_auth_state"/>
+                                    <field name="app_clientid"/>
+                                    <field name="app_secret" password="1"/>
+                                    <field name="token_request_error"/>
+                                </group>
+                                <group name="grp_auth_sub_2">
+                                    <field name="auth_request_state"/>
+                                    <field name="access_token" password="1"/>
+                                    <field name="refresh_token" password="1"/>
+                                    <field name="token_expire_in"/>
+                                </group>
+                            </group>
+                        </page>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>
